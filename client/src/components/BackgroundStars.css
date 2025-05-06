@@ -1,0 +1,24 @@
+.star {
+    position: absolute;
+    background: white;
+    border-radius: 50%;
+    width: 3px;
+    height: 3px;
+    animation: twinkling 1.5s infinite;
+    z-index: 0;
+  }
+  
+  @keyframes twinkling {
+    0% { opacity: 0.1; }
+    50% { opacity: 1; }
+    100% { opacity: 0.1; }
+  }
+  
+  .star:nth-child(odd) {
+    animation-duration: 2s;
+  }
+  
+  .star:nth-child(even) {
+    animation-duration: 1.5s;
+  }
+  

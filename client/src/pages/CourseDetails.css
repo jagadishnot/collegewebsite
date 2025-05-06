@@ -1,0 +1,68 @@
+.course-details-container {
+    padding: 40px;
+    background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+    min-height: 100vh;
+    color: #fff;
+    font-family: 'Segoe UI', sans-serif;
+  }
+  
+  .title {
+    text-align: center;
+    font-size: 2.8rem;
+    margin-bottom: 30px;
+    color: #00e6e6;
+    text-shadow: 0 0 10px #00f2ff;
+  }
+  
+  .course-grid {
+    display: grid;
+    gap: 30px;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  }
+  
+  .course-card {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 20px;
+    padding: 25px;
+    transition: transform 0.5s, box-shadow 0.5s;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 15px rgba(0, 255, 255, 0.2);
+    transform-style: preserve-3d;
+  }
+  
+  .course-card:hover {
+    transform: scale(1.03) rotateY(2deg);
+    box-shadow: 0 10px 25px rgba(0, 255, 255, 0.4);
+  }
+  
+  .course-card h2 {
+    font-size: 1.5rem;
+    color: #00ffff;
+    margin-bottom: 10px;
+  }
+  
+  .course-card ul {
+    padding-left: 20px;
+    margin-top: 10px;
+  }
+  
+  .course-card li {
+    margin-bottom: 5px;
+  }
+  
+  .zoom-in {
+    animation: zoomIn 0.6s ease forwards;
+  }
+  
+  @keyframes zoomIn {
+    0% {
+      opacity: 0;
+      transform: scale(0.9);
+    }
+    100% {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+  

@@ -1,0 +1,118 @@
+/* Background Image */
+.college-container {
+    background: url('https://www.thoughtco.com/thmb/WeZTn-IMR0RqlNB4THgDxMFL__c=/2779x1852/filters:fill(auto,1)/swarthmore-college-Eric-Behrens-flickr-5706ffe35f9b581408d48cb3.jpg') no-repeat center center/cover;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+  
+  /* Overlay for Content */
+  .overlay {
+    background-color: rgba(0, 0, 0, 0.55); /* dark glassy effect */
+    padding: 60px 40px;
+    border-radius: 16px;
+    max-width: 800px;
+    width: 90%;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.6);
+    animation: fadeIn 1s ease-in;
+  }
+  
+  /* Heading Style */
+  .heading {
+    font-size: 48px;
+    color: #fff;
+    margin-bottom: 10px;
+    text-align: center;
+  }
+  
+  /* Subheading Style */
+  .subheading {
+    font-size: 20px;
+    color: #ddd;
+    margin-bottom: 30px;
+    text-align: center;
+  }
+  
+  /* Info Section */
+  .info-section {
+    background-color: rgba(0, 0, 0, 0.4); /* light black */
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+    margin-bottom: 25px;
+    transition: transform 0.3s ease;
+    color: #f1f1f1;
+  }
+  
+  .info-section:hover {
+    transform: scale(1.03);
+  }
+  
+  /* Course List */
+  .course-list {
+    list-style: none;
+    padding-left: 20px;
+    line-height: 1.8;
+    color: #eee;
+  }
+  
+  /* Button Group Styling */
+  .button-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    justify-content: center;
+    margin-top: 30px;
+  }
+  
+  /* Button Style */
+  .button-group button {
+    padding: 14px 26px;
+    font-size: 16px;
+    background-color: #009688;
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+  }
+  
+  .button-group button:hover {
+    background-color: #004d40;
+    transform: translateY(-3px);
+  }
+  
+  /* Animations */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .animate-slide {
+    animation: slideIn 1.2s ease-in-out;
+  }
+  
+  .animate-fade {
+    animation: fadeIn 2s ease-in;
+  }
+  
+  @keyframes slideIn {
+    from {
+      transform: translateX(-100px);
+      opacity: 0;
+    }
+    to {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+  

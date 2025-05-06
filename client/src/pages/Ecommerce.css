@@ -1,0 +1,443 @@
+/* Container */
+.ecommerce-container {
+  position: relative;
+  z-index: 2;
+  padding: 30px;
+  width: 95%;
+  max-width: 1300px;
+  background: rgba(0, 0, 0, 0.4); /* transparent dark overlay */
+  font-family: 'Segoe UI', sans-serif;
+  border-radius: 20px;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.08);
+}
+
+/* Heading */
+.ecommerce-container h2 {
+  text-align: center;
+  color: #ffffff;
+  font-size: 2rem;
+  margin-bottom: 2rem;
+}
+
+/* Product Grid */
+.product-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+/* Product Card 3D Effect */
+.product-card {
+  background: rgba(255, 255, 255, 0.05); /* translucent */
+  border-radius: 12px;
+  padding: 20px;
+  width: 240px;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.07);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, filter 0.3s ease;
+  text-align: center;
+  transform-style: preserve-3d;
+  perspective: 1000px;
+  border: 2px solid rgba(0, 174, 255, 0.3);
+  backdrop-filter: blur(4px);
+  color: #fff;
+}
+
+/* Hover Effect */
+.product-card:hover {
+  transform: translateY(-10px) rotateY(5deg) rotateX(5deg);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+  filter: brightness(1.1);
+  border-color: #00c6ff;
+}
+
+/* Button */
+.product-card button {
+  background-color: #0077cc;
+  color: white;
+  border: none;
+  padding: 8px 14px;
+  margin-top: 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+  transform-style: preserve-3d;
+  position: relative;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.product-card button:hover {
+  background-color: #005fa3;
+  transform: translateY(-3px) rotateX(5deg);
+  box-shadow: 0 4px 12px rgba(0, 174, 255, 0.5);
+  animation: glowPulse 1.5s infinite alternate;
+}
+
+.product-card button:active {
+  transform: translateY(2px);
+}
+
+/* Glowing Pulse Animation */
+@keyframes glowPulse {
+  0% {
+    box-shadow: 0 0 8px #00c6ff, 0 0 12px #00c6ff;
+  }
+  100% {
+    box-shadow: 0 0 15px #00c6ff, 0 0 20px #00c6ff;
+  }
+}
+
+/* Cart Section */
+.cart-section {
+  margin-top: 40px;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.05); /* translucent */
+  border-radius: 12px;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.05);
+  color: #fff;
+  backdrop-filter: blur(4px);
+}
+
+.cart-section h3 {
+  color: #eee;
+  margin-bottom: 10px;
+}
+
+.cart-item {
+  font-size: 1rem;
+  color: #ddd;
+  margin: 6px 0;
+}
+
+.cart-total {
+  margin-top: 15px;
+  font-size: 1.2rem;
+  color: #fff;
+}
+
+.cart-section button {
+  background-color: #28a745;
+  color: white;
+  border: none;
+  padding: 10px 18px;
+  margin-top: 12px;
+  font-size: 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.cart-section button:hover {
+  background-color: #1f883d;
+}
+
+/* Search Bar */
+.search-bar {
+  position: relative;
+  margin: 20px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Search Input */
+.search-bar input {
+  width: 380px;
+  padding: 12px 42px 12px 48px;
+  border: none;
+  border-radius: 35px;
+  font-size: 1.05rem;
+  font-weight: bold;
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  text-shadow: none;
+  box-shadow: inset 2px 2px 4px rgba(255, 255, 255, 0.1),
+              4px 4px 12px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease-in-out;
+  backdrop-filter: blur(3px);
+}
+
+.search-bar input::placeholder {
+  color: #ccc;
+  font-style: italic;
+}
+
+.search-bar input:focus {
+  outline: none;
+  transform: scale(1.05);
+  animation: pulseGlow 1.2s infinite;
+  box-shadow: 0 0 10px rgba(0, 174, 255, 0.6), 0 0 20px rgba(0, 119, 204, 0.4);
+}
+
+/* Fancy Search Icon */
+.search-bar::before {
+  content: '🔍';
+  position: absolute;
+  left: 18px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1.3rem;
+  color: #00c6ff;
+  text-shadow: 1px 1px 2px #000;
+  transition: transform 0.3s, color 0.3s;
+}
+
+.search-bar:hover::before {
+  transform: translateY(-50%) scale(1.2);
+  color: #fff;
+}
+
+/* Starry Background */
+.starry-bg {
+  background: #000;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Twinkling Stars */
+.starry-bg::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: transparent url('https://www.transparenttextures.com/patterns/stardust.png') repeat;
+  opacity: 0.6;
+  z-index: 0;
+  animation: twinkleStars 20s linear infinite;
+}
+
+/* Falling Star */
+.starry-bg::after {
+  content: '';
+  position: absolute;
+  width: 2px;
+  height: 100px;
+  background: linear-gradient(white, transparent);
+  top: -100px;
+  left: 50%;
+  animation: shootingStar 6s linear infinite;
+  z-index: 1;
+}
+
+@keyframes twinkleStars {
+  from { background-position: 0 0; }
+  to { background-position: 1000px 1000px; }
+}
+
+@keyframes shootingStar {
+  0% { top: -100px; left: 50%; opacity: 0; }
+  10% { opacity: 1; }
+  100% { top: 100vh; left: 60%; opacity: 0; }
+}
+
+.starry-bg::before,
+.starry-bg::after {
+  pointer-events: none;
+}
+
+.top-bar {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin-bottom: 20px;
+  padding: 10px 0;
+  position: relative;
+  z-index: 3;
+}
+
+.top-right-buttons {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+/* Common Button Styling */
+.top-button {
+  position: relative;
+  padding: 10px 18px;
+  border: none;
+  border-radius: 30px;
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  cursor: pointer;
+  font-size: 0.95rem;
+  font-weight: 500;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease;
+  overflow: hidden;
+}
+
+/* Hover Effect: glowing border + scale */
+.top-button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 8px 3px rgba(0, 255, 255, 0.6);
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* Optional shimmer/glow animation */
+.top-button::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+  transform: rotate(0deg);
+  animation: shimmer 2.5s infinite linear;
+  z-index: 0;
+}
+
+.top-button span {
+  position: relative;
+  z-index: 1;
+}
+
+@keyframes shimmer {
+  0% {
+    transform: rotate(0deg) translateX(-100%);
+  }
+  100% {
+    transform: rotate(360deg) translateX(100%);
+  }
+}
+
+.top-right-buttons {
+  position: absolute;
+  right: 0;
+  display: flex;
+  gap: 12px;
+}
+.info-box {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(12px);
+  padding: 20px;
+  border-radius: 15px;
+  margin-top: 20px;
+  color: #fff;
+  box-shadow: 0 0 12px rgba(0, 255, 255, 0.3);
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.info-box button {
+  margin-right: 10px;
+  padding: 8px 16px;
+  background: #00bcd4;
+  border: none;
+  border-radius: 20px;
+  color: white;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.info-box button:hover {
+  background: #0097a7;
+}
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.65);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+.modal-box {
+  background-color: #1e1e2f;
+  padding: 30px;
+  border-radius: 16px;
+  color: white;
+  box-shadow: 0 0 20px cyan;
+  max-width: 400px;
+  width: 90%;
+  animation: scaleIn 0.3s ease;
+}
+
+.modal-content button {
+  margin-top: 10px;
+  margin-right: 10px;
+  background: #00bcd4;
+  color: white;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.modal-content button:hover {
+  background: #0097a7;
+}
+
+@keyframes scaleIn {
+  from { transform: scale(0.8); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+.chatbot-box {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.chat-history {
+  height: 200px;
+  overflow-y: auto;
+  background: #f5f5f5;
+  padding: 10px;
+  border-radius: 8px;
+}
+
+.chat-user {
+  text-align: right;
+  margin-bottom: 8px;
+  color: #333;
+}
+
+.chat-bot {
+  text-align: left;
+  margin-bottom: 8px;
+  color: #1a73e8;
+}
+
+.chat-input {
+  display: flex;
+  gap: 10px;
+}
+
+.chat-input input {
+  flex: 1;
+  padding: 8px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+.chat-input button {
+  padding: 8px 12px;
+  background: #1a73e8;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.close-btn {
+  margin-top: 10px;
+  align-self: flex-end;
+  background: #dc3545;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
