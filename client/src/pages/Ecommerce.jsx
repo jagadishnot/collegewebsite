@@ -9,10 +9,17 @@ const Ecommerce = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [modalContent, setModalContent] = useState(null);
 
+  // Use the environment variable for the backend API URL
+  const baseURL = process.env.REACT_APP_API_URL || 'http://localhost:5000';
+
   useEffect(() => {
     const fetchProducts = async () => {
-      const res = await axios.get('http://localhost:5000/api/ecommerce/products');
-      setProducts(res.data);
+      try {
+        const res = await axios.get(`${baseURL}/api/ecommerce/products`);
+        setProducts(res.data);
+      } catch (error) {
+        console.error("Error fetching products:", error);
+      }
     };
     fetchProducts();
   }, []);
@@ -75,7 +82,7 @@ const Ecommerce = () => {
     }));
 
     try {
-      await axios.post('http://localhost:5000/api/ecommerce/order', {
+      await axios.post(`${baseURL}/api/ecommerce/order`, {
         userId,
         products,
         totalAmount,
