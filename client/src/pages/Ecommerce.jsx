@@ -10,7 +10,8 @@ const Ecommerce = () => {
   const [modalContent, setModalContent] = useState(null);
 
   // Use the environment variable for the backend API URL
-  const baseURL = process.env.REACT_APP_API_URL || 'http://localhost:5000';
+const baseURL = 'https://collegewebsite-2-53qa.onrender.com';
+
 
   useEffect(() => {
     const fetchProducts = async () => {
