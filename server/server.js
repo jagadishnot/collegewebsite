@@ -1,4 +1,3 @@
-// server.js
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
@@ -13,8 +12,16 @@ const ecommerceRoutes = require('./routes/ecommerce');
 const app = express();
 const PORT = process.env.PORT || 5000;
 
+// CORS Configuration
+const corsOptions = {
+  origin: 'https://collegewebsite-4.onrender.com', // Replace with your frontend URL
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
+  credentials: true, // Allow cookies and authorization headers
+};
+
 // Middleware
-app.use(cors());
+app.use(cors(corsOptions));  // Apply the CORS settings here
 app.use(express.json());
 app.use(express.urlencoded({ extended: true })); // Optional: useful for form submissions
 
@@ -31,7 +38,6 @@ app.get('/', (req, res) => {
   res.send('API is running...');
 });
 
-
 // MongoDB Connection
 mongoose.connect(process.env.MONGO_URI)
   .then(() => {
@@ -43,7 +49,6 @@ mongoose.connect(process.env.MONGO_URI)
     });
   })
   .catch((err) => console.error("MongoDB connection error:", err));
-
 
 // Global error handler for unhandled rejections
 process.on('unhandledRejection', (err) => {
