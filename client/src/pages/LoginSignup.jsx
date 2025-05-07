@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import './LoginSignup.css';
 
 // Set base URL for backend API
-axios.defaults.baseURL = 'http://localhost:5000'; // Change this if your backend is hosted elsewhere
+axios.defaults.baseURL = 'https://collegewebsite-2-53qa.onrender.com'; // Change this if your backend is hosted elsewhere
 
 function LoginSignup() {
   const [isLogin, setIsLogin] = useState(true);
