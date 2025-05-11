@@ -81,12 +81,13 @@ const CollegeForm = () => {
         formData.append(key, val);
       });
 
-      const res = await axios.post('https://collegewebsite-2-53qa.onrender.com', formData, {
-        headers: {
-          'Content-Type': 'multipart/form-data',
-          Authorization: Bearer ${localStorage.getItem('token')},
-        },
-      });
+     const res = await axios.post('https://collegewebsite-2-53qa.onrender.com/api/college/submit', formData, {
+  headers: {
+    'Content-Type': 'multipart/form-data',
+    Authorization: `Bearer ${localStorage.getItem('token')}`, // Fixed here
+  },
+});
+
 
       setMessage(res.data.message);
       setForm({
