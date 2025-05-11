@@ -26,7 +26,6 @@ const CollegeForm = () => {
   const [message, setMessage] = useState('');
   const [error, setError] = useState('');
 
-  // Calculate age based on dob
   const calculateAge = (dob) => {
     const birthDate = new Date(dob);
     const today = new Date();
@@ -38,7 +37,6 @@ const CollegeForm = () => {
     setForm(prev => ({ ...prev, age: age.toString() }));
   };
 
-  // Update age when dob changes
   useEffect(() => {
     if (form.dob) {
       calculateAge(form.dob);
@@ -78,17 +76,21 @@ const CollegeForm = () => {
     try {
       const formData = new FormData();
       Object.entries(form).forEach(([key, val]) => {
-        formData.append(key, val);
+        if (val !== null && val !== '') {
+          formData.append(key, val);
+        }
       });
+
+      const token = localStorage.getItem('token');
+      console.log('Submitting with token:', token);
 
       const res = await axios.post('https://collegewebsite-2-53qa.onrender.com', formData, {
         headers: {
-          'Content-Type': 'multipart/form-data',
-          Authorization: `Bearer ${localStorage.getItem('token')}`,
+          Authorization: `Bearer ${token}`,
         },
       });
 
-      setMessage(res.data.message);
+      setMessage(res.data.message || 'Form submitted successfully!');
       setForm({
         fullName: '', email: '', phone: '', dob: '', gender: '', age: '', course: '',
         address: '', neetMarks: '', entranceMarks: '', twelfthMarks: '',
@@ -96,7 +98,8 @@ const CollegeForm = () => {
         certificate: null, photo: null,
       });
     } catch (err) {
-      setError(err?.response?.data?.message || 'Error submitting form.');
+      console.error('Submission error:', err);
+      setError(err?.response?.data?.message || err.message || 'Error submitting form.');
     }
   };
 
@@ -115,14 +118,15 @@ const CollegeForm = () => {
           <option value="Male">Male</option>
           <option value="Female">Female</option>
         </select>
+
         <textarea name="address" placeholder="Address" value={form.address} onChange={handleChange} required />
+
         <select name="course" value={form.course} onChange={handleChange} required>
           <option value="">Select Course</option>
           <option value="MBBS">MBBS</option>
           <option value="B.Tech">B.Tech</option>
           <option value="B.Com">B.Com</option>
           <option value="B.Sc">B.Sc</option>
-          {/* Add more courses if needed */}
         </select>
 
         {form.course === 'MBBS' && (
