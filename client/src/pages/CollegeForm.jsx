@@ -84,7 +84,7 @@ const CollegeForm = () => {
       const res = await axios.post('https://collegewebsite-2-53qa.onrender.com/api/college/submit', formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
-          Authorization: Bearer ${localStorage.getItem('token')},
+          Authorization: `Bearer ${localStorage.getItem('token')}`,
         },
       });
 
@@ -122,7 +122,6 @@ const CollegeForm = () => {
           <option value="B.Tech">B.Tech</option>
           <option value="B.Com">B.Com</option>
           <option value="B.Sc">B.Sc</option>
-          {/* Add more courses if needed */}
         </select>
 
         {form.course === 'MBBS' && (
