@@ -1,7 +1,6 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
-const path = require('path');
 require('dotenv').config();
 
 // Import Routes
@@ -9,52 +8,50 @@ const authRoutes = require('./routes/auth');
 const collegeRoutes = require('./routes/college');
 const ecommerceRoutes = require('./routes/ecommerce');
 
+// App setup
 const app = express();
 const PORT = process.env.PORT || 5000;
 
-// CORS
+// CORS Configuration
 const corsOptions = {
-  origin: ['https://collegewebsite-4.onrender.com'], // Only your deployed frontend
+  origin: 'https://collegewebsite-4.onrender.com', // Replace with your frontend URL
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   allowedHeaders: ['Content-Type', 'Authorization'],
-  credentials: true,
+  credentials: true, // Allow cookies and authorization headers
 };
-app.use(cors(corsOptions));
 
 // Middleware
+app.use(cors(corsOptions));  // Apply the CORS settings here
 app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+app.use(express.urlencoded({ extended: true })); // Optional: useful for form submissions
 
-// Serve uploads
+// Serve static files (uploads)
 app.use('/uploads', express.static('uploads'));
 
-// API Routes
+// Routes
 app.use('/api/auth', authRoutes);
 app.use('/api/college', collegeRoutes);
 app.use('/api/ecommerce', ecommerceRoutes);
 
-// Serve React frontend in production
-if (process.env.NODE_ENV === 'production') {
-  app.use(express.static(path.join(__dirname, 'client/build')));
-  app.get('*', (req, res) => {
-    res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
-  });
-} else {
-  app.get('/', (req, res) => {
-    res.send('API is running...');
-  });
-}
+// Default route
+app.get('/', (req, res) => {
+  res.send('API is running...');
+});
 
-// MongoDB connection
-mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true })
+// MongoDB Connection
+mongoose.connect(process.env.MONGO_URI)
   .then(() => {
-    console.log('Server running on port', PORT);
-    app.listen(PORT);
-  })
-  .catch((err) => console.error('MongoDB connection error:', err));
+    console.log("MongoDB connected successfully");
 
-// Handle unhandled rejections
+    // Start the server after DB connects
+    app.listen(PORT, () => {
+      console.log(✅ Server running on port ${PORT});
+    });
+  })
+  .catch((err) => console.error("MongoDB connection error:", err));
+
+// Global error handler for unhandled rejections
 process.on('unhandledRejection', (err) => {
-  console.error('Unhandled Promise Rejection:', err.message);
+  console.error('❌ Unhandled Promise Rejection:', err.message);
   process.exit(1);
 });
