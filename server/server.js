@@ -1,3 +1,4 @@
+// server.js
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
@@ -16,7 +17,7 @@ const PORT = process.env.PORT || 5000;
 // ------------------- CORS Configuration -------------------
 const corsOptions = {
   origin: ['http://localhost:3000', 'https://collegewebsite-4.onrender.com'],
-  methods: ['GET','POST','PUT','DELETE'],
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
   allowedHeaders: ['Content-Type','Authorization'],
   credentials: true,
 };
@@ -36,10 +37,10 @@ app.use('/api/ecommerce', ecommerceRoutes);
 
 // ------------------- React Frontend Setup -------------------
 if (process.env.NODE_ENV === 'production') {
-  // Serve static files from React app
+  // Serve React static files
   app.use(express.static(path.join(__dirname, 'client/build')));
 
-  // For any route not handled by API, send index.html
+  // Catch-all route to serve React frontend
   app.get('*', (req, res) => {
     res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
   });
@@ -55,13 +56,16 @@ mongoose.connect(process.env.MONGO_URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 })
-  .then(() => {
-    console.log('✅ MongoDB connected successfully');
-    app.listen(PORT, () => {
-      console.log(`✅ Server running on port ${PORT}`);
-    });
-  })
-  .catch((err) => console.error('❌ MongoDB connection error:', err));
+.then(() => {
+  console.log('✅ MongoDB connected successfully');
+  app.listen(PORT, () => {
+    console.log(`🚀 Server running on http://localhost:${PORT}`);
+  });
+})
+.catch(err => {
+  console.error('❌ MongoDB connection error:', err.message);
+  process.exit(1);
+});
 
 // ------------------- Global Error Handling -------------------
 process.on('unhandledRejection', (err) => {
