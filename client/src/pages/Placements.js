@@ -3,21 +3,21 @@ import './Placements.css';
 
 const students = [
   {
-    name: "Aarav Sharma",
+    name: "Lionel Messi",
     photo: "https://tse4.mm.bing.net/th?id=OIP.Fcqpva83i8opAyj5RQw-lwHaE8&pid=Api&P=0&h=180",
     company: "Tata Consultancy Services (TCS)",
     position: "Software Engineer",
     package: "₹6.5 LPA"
   },
   {
-    name: "Neha Verma",
+    name: "Cristiano Ronaldo",
     photo: "http://getwallpapers.com/wallpaper/full/0/a/5/312939.jpg",
     company: "Infosys",
     position: "Systems Analyst",
     package: "₹5.2 LPA"
   },
   {
-    name: "Rohit Mehra",
+    name: "ishowspeed",
     photo: "https://wallpapers.com/images/hd/ishowspeed-mddc5768lnf2i1yk.jpg",
     company: "Amazon",
     position: "Cloud Support Associate",
