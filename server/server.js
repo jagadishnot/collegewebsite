@@ -8,24 +8,22 @@ const authRoutes = require('./routes/auth');
 const collegeRoutes = require('./routes/college');
 const ecommerceRoutes = require('./routes/ecommerce');
 
-// App setup
 const app = express();
 const PORT = process.env.PORT || 5000;
 
 // CORS Configuration
 const corsOptions = {
-  origin: 'https://collegewebsite-4.onrender.com', // Replace with your frontend URL
+  origin: 'https://collegewebsite-4.onrender.com',
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
-  allowedHeaders: ['Content-Type', 'Authorization'],
-  credentials: true, // Allow cookies and authorization headers
+  credentials: true,
 };
 
 // Middleware
-app.use(cors(corsOptions));  // Apply the CORS settings here
+app.use(cors(corsOptions));
 app.use(express.json());
-app.use(express.urlencoded({ extended: true })); // Optional: useful for form submissions
+app.use(express.urlencoded({ extended: true }));
 
-// Serve static files (uploads)
+// Static files
 app.use('/uploads', express.static('uploads'));
 
 // Routes
@@ -33,24 +31,26 @@ app.use('/api/auth', authRoutes);
 app.use('/api/college', collegeRoutes);
 app.use('/api/ecommerce', ecommerceRoutes);
 
-// Default route
+// Test route
 app.get('/', (req, res) => {
   res.send('API is running...');
 });
 
-// MongoDB Connection
+// MongoDB Connection + Server Start
 mongoose.connect(process.env.MONGO_URI)
   .then(() => {
-    console.log("MongoDB connected successfully");
+    console.log("✅ MongoDB connected successfully");
 
-    // Start the server after DB connects
     app.listen(PORT, () => {
-      console.log(✅ Server running on port ${PORT});
+      console.log(`🚀 Server running on port ${PORT}`);
     });
   })
-  .catch((err) => console.error("MongoDB connection error:", err));
+  .catch((err) => {
+    console.error("❌ MongoDB connection error:", err);
+    process.exit(1);
+  });
 
-// Global error handler for unhandled rejections
+// Global error handler
 process.on('unhandledRejection', (err) => {
   console.error('❌ Unhandled Promise Rejection:', err.message);
   process.exit(1);
